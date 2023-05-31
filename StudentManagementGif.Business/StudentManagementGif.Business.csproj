@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentManagementGif.Data\StudentManagementGif.Data.csproj" />
+    <ProjectReference Include="..\StudentManagementGif.Models\StudentManagementGif.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<StudentManagementGif.Models.ViewModels.UserView>
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        @*<a class="btn btn-primary float-right" asp-action="Create">Create New</a>*@
+    </div>
+    <div class="card-body">
+        <table class="table" id="tblStudents">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentClass)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParentEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParentMobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Active)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentClass)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParentEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParentMobile)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(modelItem => item.Active, new { @value=item.Id, @onclick = "CollectActiveStatus(this.checked, this.value)" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="form-group float-right">
+            <input type="submit" id="btnUpdateStatus" name="btnUpdateStatus" disabled onclick="UpdateActiveStatus();" value="Update Active Status" class="btn btn-primary" />
+        </div>
+    </div>
+</div>

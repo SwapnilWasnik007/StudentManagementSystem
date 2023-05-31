@@ -1,0 +1,79 @@
+﻿@model StudentManagementGif.Models.ViewModels.UserEditView
+
+@using StudentManagementGif.Models.ViewModels
+
+@{
+    ViewData["Title"] = "Edit Student Details";
+    List<ClassView> classView = ViewData["Classes"] as List<ClassView>;
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="card">
+    <form asp-action="Save">
+        <div class="card-header">
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <input asp-for="Id" class="form-control" hidden />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="StudentName" class="control-label"></label>
+                    <input asp-for="StudentName" class="form-control" />
+                    <span asp-validation-for="StudentName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="ParentName" class="control-label"></label>
+                    <input asp-for="ParentName" class="form-control" readonly />
+                    <span asp-validation-for="ParentName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="ClassId" class="control-label"></label>
+                    <select asp-for="ClassId" class="form-control">
+                        @{
+                            foreach (ClassView cls in classView)
+                            {
+                                <option value="@cls.Id">@cls.Name</option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="ClassId" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="ParentEmail" class="control-label"></label>
+                    <input asp-for="ParentEmail" class="form-control" />
+                    <span asp-validation-for="ParentEmail" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="ParentMobile" class="control-label"></label>
+                    <input asp-for="ParentMobile" class="form-control" />
+                    <span asp-validation-for="ParentMobile" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group form-check h5">
+                    <label class="form-check-label p-4">
+                        <input class="form-check-input mt-4 " asp-for="Active" />
+                        <label asp-for="Active" class="control-label mt-3"></label>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-group float-right">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
