@@ -36,3 +36,6 @@ This project aims to cover the following learning objectives:
 11. Configuring environment specific appsetting/config file in startup.cs
 
 Feel free to explore the source code and experiment with different concepts to enhance your understanding of .NET Core MVC.
+
+Thank you for your interest in this .Net Core MVC Learning project. 
+### Happy coding!
